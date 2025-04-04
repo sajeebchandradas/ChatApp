@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat: {{ chat_topic[1] }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Chat: {{ chat_topic[1] }}</h1>
+
+    <h2>Messages</h2>
+    <table border="1">
+        <tr>
+            <th>Sender</th>
+            <th>Message</th>
+        </tr>
+        {% for sender, content in messages %}
+        <tr>
+            <td>{{ sender }}</td>
+            <td>{{ content }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Add a Message</h2>
+    <form method="POST">
+        <input type="text" name="sender" placeholder="Your Name" required>
+        <input type="text" name="content" placeholder="Message" required>
+        <br>
+        <button type="submit">Send</button>
+    </form>
+
+    <br>
+    <a href="{{ url_for('home') }}">Back to Home</a>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'92aa03c3ea036dc5',t:'MTc0MzY5ODQ5OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

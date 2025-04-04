@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Create a New Chat</h1>
+    <form method="POST">
+        <input type="text" name="topic" placeholder="Chat Topic" required>
+        <input type="text" name="creator" placeholder="Chat Topic Creator Name" required>
+        <input type="text" name="sender" placeholder="Your Name" required>
+        <input type="text" name="content" placeholder="First Message" required>
+        <br>
+        <button type="submit">Create Chat</button>
+    </form>
+
+    <h2>Available Chats</h2>
+    <table border="1">
+        <tr>
+            <th>Chat Topic</th>
+            <th>Creator</th>
+        </tr>
+        {% for chat in chats %}
+        <tr>
+            <td><a href="{{ url_for('chat', chat_id=chat[0]) }}">{{ chat[1] }}</a></td>
+            <td>{{ chat[2] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'92aa03c3ec5b6dc5',t:'MTc0MzY5ODQ5OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
